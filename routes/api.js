@@ -151,6 +151,19 @@ router.get('/usedgames',function(req, res) {
 
 
 
+    router.post('/addviews', function(req, res) {
+    let query ={_id: req.body.id}
+
+
+    Games.findOneAndUpdate(query, { $inc: { viewsconts: 1 }},function(err, views) {
+        if (err)
+            res.send(err)
+        
+        res.json(views);
+    });
+    });
+
+
 
 
 
